@@ -6,6 +6,9 @@ public class Main {
         System.out.println(op.sub(10, 10));
 
         System.out.println(reverse("string"));
+
+        Student st = new Student("Idk", 19);
+        System.out.println(st.toString());
     }
 
     public static String reverse(String input) {
