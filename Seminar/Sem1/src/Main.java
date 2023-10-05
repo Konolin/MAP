@@ -10,7 +10,9 @@ public class Main {
 //        Student st = new Student("Idk", 19);
 //        System.out.println(st.toString());
 
-        System.out.println(wordCount(" nu  stiu ce   ec  "));
+//        System.out.println(wordCount(" nu  stiu ce   ec  "));
+
+        System.out.println(op.isPerfect(6));
     }
 
     public static String reverse(String input) {
