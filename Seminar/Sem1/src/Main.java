@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         Operations op = new Operations();
@@ -12,7 +14,12 @@ public class Main {
 
 //        System.out.println(wordCount(" nu  stiu ce   ec  "));
 
-        System.out.println(op.isPerfect(6));
+//        System.out.println(op.isPerfect(6));
+
+        TempStation ts = new TempStation();
+        System.out.println(ts.averageTemp());
+        System.out.println(Arrays.toString(ts.largestTempDiff()));
+        System.out.println(ts.toString());
     }
 
     public static String reverse(String input) {
