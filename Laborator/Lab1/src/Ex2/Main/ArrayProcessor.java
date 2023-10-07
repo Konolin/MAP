@@ -22,18 +22,18 @@ public class ArrayProcessor {
     }
 
     public int maxSum(int[] array) {
-        int sum = sumArray(array);
+        int sum = arraySum(array);
         int min = minElem(array);
         return sum - min;
     }
 
     public int minSum(int[] array) {
-        int sum = sumArray(array);
-        int max = minElem(array);
+        int sum = arraySum(array);
+        int max = maxElem(array);
         return sum - max;
     }
 
-    public int sumArray(int[] array) {
+    public int arraySum(int[] array) {
         int sum = 0;
         for (int elem : array) {
             sum += elem;
