@@ -27,12 +27,12 @@ public class NumberProcessor {
         int[] result = new int[nr1.length];
         int carry = 0;
         for (int i = nr1.length - 1; i >= 0; i--) {
-            if (nr1[i] - carry >= nr2[i]) {
+            if (nr1[i] >= nr2[i] + carry) {
+                result[i] = nr1[i] - nr2[i] - carry;
                 carry = 0;
-                result[i] = nr1[i] - nr2[i];
             } else {
+                result[i] = 10 + nr1[i] - nr2[i] - carry;
                 carry = 1;
-                result[i] = 10 + nr1[i] - nr2[i];
             }
         }
         if (result[0] == 0) {
