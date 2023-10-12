@@ -32,4 +32,8 @@ public class Tool {
                 ", weight=" + weight +
                 '}';
     }
+
+    public boolean canCut() {
+        return false;
+    }
 }
