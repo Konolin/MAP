@@ -93,7 +93,7 @@ public class GradeProcessor {
         return max;
     }
 
-    public void validateGrade(int grade) {
+    private void validateGrade(int grade) {
         if (grade < 0 || grade > 100) {
             throw new RuntimeException("Grade not valid");
         }

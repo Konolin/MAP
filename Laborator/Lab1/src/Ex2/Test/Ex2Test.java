@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Ex2Test {
     private ArrayProcessor ap;
@@ -16,17 +17,19 @@ public class Ex2Test {
     }
 
     @Test
-    public void maxTest() {
+    public void maxElemTest() {
         assertEquals(53, ap.maxElem(new int[]{0, 5, 1, 53, 23, 15, -14}), SHOULD_BE_EQUAL);
         assertEquals(0, ap.maxElem(new int[]{0, 0, 0, 0}), SHOULD_BE_EQUAL);
         assertEquals(-10, ap.maxElem(new int[]{-40, -10, -31, -120}), SHOULD_BE_EQUAL);
+        assertThrows(RuntimeException.class, () -> ap.maxElem(new int[0]));
     }
 
     @Test
-    public void minTest() {
+    public void minElemTest() {
         assertEquals(-14, ap.minElem(new int[]{0, 5, 1, 53, 23, 15, -14}), SHOULD_BE_EQUAL);
         assertEquals(0, ap.minElem(new int[]{0, 0, 0, 0}), SHOULD_BE_EQUAL);
         assertEquals(-120, ap.minElem(new int[]{-40, -10, -31, -120}), SHOULD_BE_EQUAL);
+        assertThrows(RuntimeException.class, () -> ap.minElem(new int[0]));
     }
 
     @Test
