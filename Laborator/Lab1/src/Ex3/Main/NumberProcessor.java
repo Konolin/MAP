@@ -1,7 +1,16 @@
 package Ex3.Main;
 
+import java.util.Arrays;
+
 public class NumberProcessor {
     public int[] sum(int[] nr1, int[] nr2) {
+        validateNumber(nr1);
+        validateNumber(nr2);
+
+        if (nr1[0] == 0 && nr1.length > 1 || nr2[0] == 0 && nr2.length > 1) {
+            throw new RuntimeException("Number can't start with 0.");
+        }
+
         int[] result = new int[nr1.length];
         int carry = 0;
         for (int i = nr1.length - 1; i >= 0; i--) {
@@ -15,6 +24,7 @@ public class NumberProcessor {
     }
 
     public int[] extend(int[] number, int carry) {
+        validateNumber(number);
         int[] result = new int[number.length + 1];
         result[0] = carry;
         for (int i = 0; i < number.length; i++) {
@@ -24,6 +34,13 @@ public class NumberProcessor {
     }
 
     public int[] sub(int[] nr1, int[] nr2) {
+        validateNumber(nr1);
+        validateNumber(nr2);
+
+        if (nr1[0] == 0 && nr1.length > 1 || nr2[0] == 0 && nr2.length > 1) {
+            throw new RuntimeException("Number can't start with 0.");
+        }
+
         int[] result = new int[nr1.length];
         int carry = 0;
         for (int i = nr1.length - 1; i >= 0; i--) {
@@ -42,22 +59,32 @@ public class NumberProcessor {
     }
 
     public int[] makeSmaller(int[] number) {
+        validateNumber(number);
+
         int j = 0;
         while (number[j] == 0) {
             j++;
         }
         int[] result = new int[number.length - j];
-        for(int i = 0; i < result.length; i++) {
+        for (int i = 0; i < result.length; i++) {
             result[i] = number[i + j];
         }
         return result;
     }
 
-    public int[] multiply(int[] nr, int digit) {
-        int[] result = new int[nr.length];
+    public int[] multiply(int[] number, int digit) {
+        validateNumber(number);
+        if (digit < 0 || digit > 9) {
+            throw new RuntimeException("Input should be a positive digit.");
+        }
+        if (number[0] == 0 && number.length > 1) {
+            throw new RuntimeException("Number can't start with 0.");
+        }
+
+        int[] result = new int[number.length];
         int carry = 0;
-        for (int i = nr.length - 1; i >= 0; i--) {
-            int product = nr[i] * digit + carry;
+        for (int i = number.length - 1; i >= 0; i--) {
+            int product = number[i] * digit + carry;
             result[i] = product % 10;
             carry = product / 10;
         }
@@ -67,11 +94,22 @@ public class NumberProcessor {
         return result;
     }
 
-    public int[] divide(int[] nr, int divisor) {
-        int[] result = new int[nr.length];
+    public int[] divide(int[] number, int divisor) {
+        validateNumber(number);
+        if (divisor == 0) {
+            throw new RuntimeException("Can't divide by 0.");
+        }
+        if (divisor < 0 || divisor > 9) {
+            throw new RuntimeException("Input should be a positive digit.");
+        }
+        if (number[0] == 0 && number.length > 1) {
+            throw new RuntimeException("Number can't start with 0.");
+        }
+
+        int[] result = new int[number.length];
         int remainder = 0;
-        for (int i = 0; i < nr.length; i++) {
-            int currentDigit = nr[i] + remainder * 10;
+        for (int i = 0; i < number.length; i++) {
+            int currentDigit = number[i] + remainder * 10;
             result[i] = currentDigit / divisor;
             remainder = currentDigit % divisor;
         }
@@ -79,5 +117,16 @@ public class NumberProcessor {
             result = makeSmaller(result);
         }
         return result;
+    }
+
+    private void validateNumber(int[] number) {
+        if (number.length == 0) {
+            throw new RuntimeException("Number should not be null.");
+        }
+        for (int digit : number) {
+            if (digit > 9 || digit < 0) {
+                throw new RuntimeException("Invalid digit.");
+            }
+        }
     }
 }
