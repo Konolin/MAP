@@ -5,6 +5,8 @@ public class GradeProcessor {
         int[] insufficientGradesArray = new int[0];
 
         for (int grade : grades) {
+            validateGrade(grade);
+
             if (round(grade) < 40) {
                 insufficientGradesArray = addToArray(insufficientGradesArray, round(grade));
             }
@@ -17,6 +19,8 @@ public class GradeProcessor {
         int[] sufficientGradesArray = new int[0];
 
         for (int grade : grades) {
+            validateGrade(grade);
+
             if (round(grade) >= 40) {
                 sufficientGradesArray = addToArray(sufficientGradesArray, round(grade));
             }
@@ -26,9 +30,13 @@ public class GradeProcessor {
     }
 
     public double average(int[] grades) {
-        int sum = 0;
+        if (grades.length == 0) {
+            throw new RuntimeException("Grades can not be empty in this case.");
+        }
 
+        int sum = 0;
         for (int grade : grades) {
+            validateGrade(grade);
             sum += grade;
         }
 
@@ -39,6 +47,7 @@ public class GradeProcessor {
         int[] roundedGrades = new int[grades.length];
 
         for (int i = 0; i < grades.length; i++) {
+            validateGrade(grades[i]);
             roundedGrades[i] = round(grades[i]);
         }
 
@@ -46,6 +55,7 @@ public class GradeProcessor {
     }
 
     public int round(int grade) {
+        validateGrade(grade);
         if (grade < 38) {
             return grade;
         }
@@ -56,6 +66,7 @@ public class GradeProcessor {
     }
 
     public int[] addToArray(int[] oldArray, int newValue) {
+        validateGrade(newValue);
         int[] newArray = new int[oldArray.length + 1];
 
         for (int i = 0; i < oldArray.length; i++) {
@@ -67,14 +78,24 @@ public class GradeProcessor {
     }
 
     public int maxGrade(int[] grades) {
-        int max = 0;
+        if (grades.length == 0) {
+            throw new RuntimeException("Grades can not be empty in this case.");
+        }
 
+        int max = 0;
         for (int grade : roundAllGrades(grades)) {
+            validateGrade(grade);
             if (grade > max) {
                 max = grade;
             }
         }
 
         return max;
+    }
+
+    public void validateGrade(int grade) {
+        if (grade < 0 || grade > 100) {
+            throw new RuntimeException("Grade not valid");
+        }
     }
 }
