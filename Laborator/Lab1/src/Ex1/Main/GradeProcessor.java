@@ -1,56 +1,46 @@
 package Ex1.Main;
 
 public class GradeProcessor {
-    public int[] insufficientGrades(int[] grades) {
+    public int[] insufficientGrades(final int[] grades) {
         int[] insufficientGradesArray = new int[0];
-
-        for (int grade : grades) {
+        for (final int grade : grades) {
             validateGrade(grade);
-
             if (round(grade) < 40) {
                 insufficientGradesArray = addToArray(insufficientGradesArray, round(grade));
             }
         }
-
         return insufficientGradesArray;
     }
 
-    public int[] sufficientGrades(int[] grades) {
+    public int[] sufficientGrades(final int[] grades) {
         int[] sufficientGradesArray = new int[0];
-
-        for (int grade : grades) {
+        for (final int grade : grades) {
             validateGrade(grade);
-
             if (round(grade) >= 40) {
                 sufficientGradesArray = addToArray(sufficientGradesArray, round(grade));
             }
         }
-
         return sufficientGradesArray;
     }
 
-    public double average(int[] grades) {
+    public double average(final int[] grades) {
         if (grades.length == 0) {
-            throw new RuntimeException("Grades can not be empty in this case.");
+            throw new IllegalArgumentException("Grades array can't be empty.");
         }
-
         int sum = 0;
-        for (int grade : grades) {
+        for (final int grade : grades) {
             validateGrade(grade);
             sum += grade;
         }
-
         return (double) sum / grades.length;
     }
 
-    public int[] roundAllGrades(int[] grades) {
+    public int[] roundAllGrades(final int[] grades) {
         int[] roundedGrades = new int[grades.length];
-
-        for (int i = 0; i < grades.length; i++) {
-            validateGrade(grades[i]);
-            roundedGrades[i] = round(grades[i]);
+        for (final int grade : grades) {
+            validateGrade(grade);
+            addToArray(roundedGrades, round(grade));
         }
-
         return roundedGrades;
     }
 
@@ -65,37 +55,31 @@ public class GradeProcessor {
         return grade;
     }
 
-    public int[] addToArray(int[] oldArray, int newValue) {
+    public int[] addToArray(final int[] oldArray, final int newValue) {
         validateGrade(newValue);
         int[] newArray = new int[oldArray.length + 1];
-
-        for (int i = 0; i < oldArray.length; i++) {
-            newArray[i] = oldArray[i];
-        }
+        System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
         newArray[oldArray.length] = newValue;
-
         return newArray;
     }
 
-    public int maxGrade(int[] grades) {
+    public int maxGrade(final int[] grades) {
         if (grades.length == 0) {
-            throw new RuntimeException("Grades can not be empty in this case.");
+            throw new IllegalArgumentException("Grades can not be empty in this case.");
         }
-
         int max = 0;
-        for (int grade : roundAllGrades(grades)) {
+        for (final int grade : roundAllGrades(grades)) {
             validateGrade(grade);
             if (grade > max) {
                 max = grade;
             }
         }
-
         return max;
     }
 
-    private void validateGrade(int grade) {
+    private void validateGrade(final int grade) {
         if (grade < 0 || grade > 100) {
-            throw new RuntimeException("Grade not valid");
+            throw new IllegalArgumentException("Grade not valid");
         }
     }
 }
