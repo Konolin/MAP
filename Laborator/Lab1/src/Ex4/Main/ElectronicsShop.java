@@ -3,7 +3,6 @@ package Ex4.Main;
 public class ElectronicsShop {
     public int cheapestItem(int[] itemArray) {
         validateArray(itemArray);
-
         int min = Integer.MAX_VALUE;
         for (int item : itemArray) {
             if (min > item) {
@@ -15,7 +14,6 @@ public class ElectronicsShop {
 
     public int mostExpensiveItem(int[] itemArray) {
         validateArray(itemArray);
-
         int max = Integer.MIN_VALUE;
         for (int item : itemArray) {
             if (max < item) {
@@ -28,7 +26,6 @@ public class ElectronicsShop {
     public int mostExpensiveAndAffordableItem(int[] itemArray, int budget) {
         validateArray(itemArray);
         validateBudget(budget);
-
         int max = Integer.MIN_VALUE;
         for (int item : itemArray) {
             if (max < item && item < budget) {
@@ -42,7 +39,6 @@ public class ElectronicsShop {
         validateArray(itemArray1);
         validateArray(itemArray2);
         validateBudget(budget);
-
         int maxSum = 0;
         for (int i = 0; i < itemArray1.length; i++) {
             for (int j = 0; j < itemArray2.length; j++) {

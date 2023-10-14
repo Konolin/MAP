@@ -1,16 +1,9 @@
 package Ex3.Main;
 
-import java.util.Arrays;
-
 public class NumberProcessor {
-    public int[] sum(int[] nr1, int[] nr2) {
+    public int[] sum(final int[] nr1, final int[] nr2) {
         validateNumber(nr1);
         validateNumber(nr2);
-
-        if (nr1[0] == 0 && nr1.length > 1 || nr2[0] == 0 && nr2.length > 1) {
-            throw new RuntimeException("Number can't start with 0.");
-        }
-
         int[] result = new int[nr1.length];
         int carry = 0;
         for (int i = nr1.length - 1; i >= 0; i--) {
@@ -23,24 +16,17 @@ public class NumberProcessor {
         return result;
     }
 
-    public int[] extend(int[] number, int carry) {
-        validateNumber(number);
+    public int[] extend(final int[] number, final int carry) {
         int[] result = new int[number.length + 1];
         result[0] = carry;
-        for (int i = 0; i < number.length; i++) {
-            result[i + 1] = number[i];
-        }
+        System.arraycopy(number, 0, result, 1, number.length);
+        validateNumber(result);
         return result;
     }
 
-    public int[] sub(int[] nr1, int[] nr2) {
+    public int[] sub(final int[] nr1, final int[] nr2) {
         validateNumber(nr1);
         validateNumber(nr2);
-
-        if (nr1[0] == 0 && nr1.length > 1 || nr2[0] == 0 && nr2.length > 1) {
-            throw new RuntimeException("Number can't start with 0.");
-        }
-
         int[] result = new int[nr1.length];
         int carry = 0;
         for (int i = nr1.length - 1; i >= 0; i--) {
@@ -58,33 +44,24 @@ public class NumberProcessor {
         return result;
     }
 
-    public int[] makeSmaller(int[] number) {
-        validateNumber(number);
-
+    public int[] makeSmaller(final int[] number) {
         int j = 0;
         while (number[j] == 0) {
             j++;
         }
         int[] result = new int[number.length - j];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = number[i + j];
-        }
+        System.arraycopy(number, j, result, 0, result.length);
+        validateNumber(result);
         return result;
     }
 
-    public int[] multiply(int[] number, int digit) {
+    public int[] multiply(final int[] number, final int multiplier) {
         validateNumber(number);
-        if (digit < 0 || digit > 9) {
-            throw new RuntimeException("Input should be a positive digit.");
-        }
-        if (number[0] == 0 && number.length > 1) {
-            throw new RuntimeException("Number can't start with 0.");
-        }
-
+        validateDigit(multiplier);
         int[] result = new int[number.length];
         int carry = 0;
         for (int i = number.length - 1; i >= 0; i--) {
-            int product = number[i] * digit + carry;
+            int product = number[i] * multiplier + carry;
             result[i] = product % 10;
             carry = product / 10;
         }
@@ -94,16 +71,11 @@ public class NumberProcessor {
         return result;
     }
 
-    public int[] divide(int[] number, int divisor) {
+    public int[] divide(final int[] number, final int divisor) {
         validateNumber(number);
+        validateDigit(divisor);
         if (divisor == 0) {
             throw new RuntimeException("Can't divide by 0.");
-        }
-        if (divisor < 0 || divisor > 9) {
-            throw new RuntimeException("Input should be a positive digit.");
-        }
-        if (number[0] == 0 && number.length > 1) {
-            throw new RuntimeException("Number can't start with 0.");
         }
 
         int[] result = new int[number.length];
@@ -123,10 +95,17 @@ public class NumberProcessor {
         if (number.length == 0) {
             throw new RuntimeException("Number should not be null.");
         }
+        if (number[0] == 0 && number.length > 1) {
+            throw new RuntimeException("Number can't start with 0.");
+        }
         for (int digit : number) {
-            if (digit > 9 || digit < 0) {
-                throw new RuntimeException("Invalid digit.");
-            }
+            validateDigit(digit);
+        }
+    }
+
+    private void validateDigit(final int digit) {
+        if (digit > 9 || digit < 0) {
+            throw new RuntimeException("Invalid digit.");
         }
     }
 }

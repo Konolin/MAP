@@ -35,11 +35,11 @@ public class GradeProcessor {
         return (double) sum / grades.length;
     }
 
-    public int[] roundAllGrades(final int[] grades) {
-        int[] roundedGrades = new int[grades.length];
+    public int[] roundAllGrades(int[] grades) {
+        int[] roundedGrades = new int[0];
         for (final int grade : grades) {
             validateGrade(grade);
-            addToArray(roundedGrades, round(grade));
+            roundedGrades = addToArray(roundedGrades, round(grade));
         }
         return roundedGrades;
     }
