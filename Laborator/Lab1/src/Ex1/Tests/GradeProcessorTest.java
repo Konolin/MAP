@@ -29,6 +29,7 @@ public class GradeProcessorTest {
         assertThrows(IllegalArgumentException.class, () -> gradeProcessor.round(-13), SHOULD_THROW_EXCEPTION);
         assertThrows(IllegalArgumentException.class, () -> gradeProcessor.round(202), SHOULD_THROW_EXCEPTION);
     }
+    // func separate
 
     @Test
     public void addToArrayTest() {

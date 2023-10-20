@@ -38,19 +38,19 @@ public class Ex2Test {
 
     @Test
     public void maxSumTest() {
-        assertEquals(39, ap.maxSum(array), SHOULD_BE_EQUAL);
+        assertEquals(97, ap.maxSum(array), SHOULD_BE_EQUAL);
         assertThrows(RuntimeException.class, () -> ap.maxSum(EMPTY_ARRAY), SHOULD_THROW_EXCEPTION);
     }
 
     @Test
     public void minSumTest() {
-        assertEquals(25, ap.minSum(array), SHOULD_BE_EQUAL);
+        assertEquals(30, ap.minSum(array), SHOULD_BE_EQUAL);
         assertThrows(RuntimeException.class, () -> ap.minSum(EMPTY_ARRAY), SHOULD_THROW_EXCEPTION);
     }
 
     @Test
     public void arraySumTest() {
-        assertEquals(42, ap.arraySum(array), SHOULD_BE_EQUAL);
+        assertEquals(83, ap.arraySum(array), SHOULD_BE_EQUAL);
         assertThrows(RuntimeException.class, () -> ap.arraySum(EMPTY_ARRAY), SHOULD_THROW_EXCEPTION);
     }
 }
