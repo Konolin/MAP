@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Remote implements Iterator<String> {
     private int index;
-    private TV tv;
+    protected TV tv;
 
     public Remote(TV tv) {
         this.tv = tv;
@@ -13,6 +13,7 @@ public class Remote implements Iterator<String> {
 
     @Override
     public boolean hasNext() {
+        // circular => no foreach possible => bad idea :(
         return true;
     }
 

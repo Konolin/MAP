@@ -7,6 +7,7 @@ public class TV implements Iterable<String> {
     private List<String> channels;
     private String brand;
     private int index;
+    private Remote remote;
 
     public TV(List<String> channels, String brand) {
         this.channels = channels;
@@ -20,6 +21,10 @@ public class TV implements Iterable<String> {
 
     public void setChannels(List<String> channels) {
         this.channels = channels;
+    }
+
+    public void setRemote(Remote remote) {
+        this.remote = remote;
     }
 
     public String getBrand() {
@@ -56,6 +61,6 @@ public class TV implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        return new Remote(this);
+        return remote;
     }
 }
