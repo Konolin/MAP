@@ -1,3 +1,5 @@
+package Ex1;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Main {
         }
 
 //        DeckIterator deckIterator = new DeckIterator(deck);
-        for(Card card : deck) {
+        for (Card card : deck) {
             System.out.println(card);
         }
     }

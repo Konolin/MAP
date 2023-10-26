@@ -1,3 +1,5 @@
+package Ex1;
+
 public class Card {
     private Color color;
     private String value;
