@@ -1,0 +1,20 @@
+{"students": [{
+	"id":1,
+	"name":"Bob",
+	"uni": "UBB",
+	"address":{
+			"street":"MK 1",
+			"city":"Cluj"
+		}
+},
+	{
+		"id":2,
+		"name":"Lob",
+		"uni": "UTCN",
+		"address":{
+			"street":"XX",
+			"city":"Cluj"
+		}
+	}
+]
+}
