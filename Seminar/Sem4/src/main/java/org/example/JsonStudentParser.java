@@ -9,16 +9,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentParser {
-    private static StudentParser instance = null;
+public class JsonStudentParser {
+    private static JsonStudentParser instance = null;
 
-    private StudentParser() {
+    private JsonStudentParser() {
 
     }
 
-    public static StudentParser getInstance() {
+    public static JsonStudentParser getInstance() {
         if (instance == null) {
-            instance = new StudentParser();
+            instance = new JsonStudentParser();
         }
         return instance;
     }
