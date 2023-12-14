@@ -4,12 +4,14 @@ import org.example.ex1.Calculator;
 import org.example.ex1.Employee;
 import org.example.ex2.Statistics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         ex1();
         ex2();
+        ex3();
     }
 
     public static void ex1() {
@@ -33,5 +35,9 @@ public class Main {
         } catch (InterruptedException e) {
             System.out.println("Nuh uh");
         }
+    }
+
+    public static void ex3() {
+//        ArrayList<ArrayList<Integer>> m1 = List.of(List.of(1, 1), List.of(1, 1));
     }
 }
