@@ -1,5 +1,10 @@
 package Ex3;
 
+import Ex3.Discounters.ComedyMovieDiscounter;
+import Ex3.Orders.Order;
+import Ex3.Orders.OrderLine;
+import Ex3.Movies.ComedyMovie;
+
 import java.util.List;
 
 public class Main {

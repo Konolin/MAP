@@ -1,4 +1,7 @@
-package Ex3;
+package Ex3.Orders;
+
+import Ex3.Discounters.Discounter;
+import Ex3.Movies.Movie;
 
 public class OrderLine {
     private int quantity;

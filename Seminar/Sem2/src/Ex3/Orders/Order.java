@@ -1,6 +1,5 @@
-package Ex3;
+package Ex3.Orders;
 
-import java.util.Date;
 import java.util.List;
 
 public class Order {
@@ -12,11 +11,9 @@ public class Order {
 
     public double calculateTotalPrice() {
         double total = 0;
-
         for (OrderLine line : orderLines) {
             total += line.calculatePrice();
         }
-
         return total;
     }
 }

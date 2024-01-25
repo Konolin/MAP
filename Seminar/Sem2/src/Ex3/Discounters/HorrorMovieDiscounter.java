@@ -1,4 +1,6 @@
-package Ex3;
+package Ex3.Discounters;
+
+import Ex3.Movies.Movie;
 
 public class HorrorMovieDiscounter implements Discounter {
     @Override

@@ -1,4 +1,4 @@
-package Ex3;
+package Ex3.Movies;
 
 import java.util.List;
 

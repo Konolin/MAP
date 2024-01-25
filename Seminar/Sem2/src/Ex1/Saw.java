@@ -5,13 +5,6 @@ public class Saw extends Tool implements Cut {
         super(name, weight);
     }
 
-    // method 1
-    @Override
-    public boolean canCut() {
-        return true;
-    }
-
-    // method 2
     @Override
     public void cut() {
         System.out.println("cutting....");
